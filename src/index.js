@@ -1,17 +1,26 @@
+// src/main.tsx or index.tsx (if using TypeScript)
+// or index.jsx for JS
+
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// Optional: use a wrapper component to handle things like themes, error boundaries, context providers, etc.
+const Root = () => (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Create and render the root
+const container = document.getElementById('root');
+if (!container) {
+  throw new Error("Root container not found. Make sure there's a div with id='root' in your HTML.");
+}
+const root = createRoot(container);
+root.render(<Root />);
+
+// Measure performance
+reportWebVitals(console.log); // Optional: change to your analytics function
