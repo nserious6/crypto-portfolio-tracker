@@ -161,7 +161,7 @@ function App() {
     if (address.trim() !== "") {
       fetchAssets(address, selectedChain);
       fetchNetWorth(address);
-      fetchWalletHistory(address); // Fetch wallet history when address changes
+      fetchWalletHistory(address);
     }
   }, [address, selectedChain]);
 
